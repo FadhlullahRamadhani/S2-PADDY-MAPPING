@@ -1,40 +1,40 @@
-# LS8-OLI-MAPPING
-Mapping of rice growth phases and bare land using Landsat-8 OLI and machine learning algorithms
+# S2-PADDY-MAPPING
 
+# Mapping of rice condition on dry season using predictive analysis
 
-This is the steps to recreate the mapping. Please change the path of folder accordingly.
+This is the steps to recreate the mapping. Please change the path of folder accordingly. 
 
-Folder SR_output_model_LS8_2018_indramayu_edit contains the results of the classification model
+Folder ML-S2_S1v1/ML_LS8_S1_LEE_S2_2019_5class_surveyV2 the results of the classification model
 
-Folder SR-LS8-indramayu-utm contains the images of the classification results from the model
+Folder ML-S2_S1v1/CLASSIFY-MASK-PADDY-CLEAR contains the final classification images of the classification results from the model
 
-A. Download Data
+I. Download Data Sentinel-1
 1. Install Python and GEE login. Please refer to https://developers.google.com/earth-engine/python_install
 
-2. Download data using dl_SR_LS8_indramayu_complete_utm.py and dl_SR_LS8_indramayu_fmask_complete_utm.py
+2. Download S1 VH with LEE filtering data using dl_S1_VH_DESC_LEE_7regency_full1.py
 
-3. Downloading LS8 values based on CCTV locations dl_SR_LS8_cctv_complete_utm.py and dl_SR_LS8_cctv_fmask_complete_utm.py 
-
-4. Download CCTV images from http://katam.litbang.pertanian.go.id/
+II. Classification process
+A. Cliping the S2-Bands with A-S2_L2A_BAND_PR_ARCPY_PADDY1.R and A-S1_LEE_split_paddy_VH1 for Sentinel-1 VH band (with ArcGIS installed. adjust the folder of ArcPy)
 
 B. Building the model
-1. Synchronize with according images and its interpretations of rice growth stages and bare land.
+1. Labelling on points from field survey just for five rice condition: 1. Bare land, 2. Flooding, 3. Vegetative, 4. Reproductive, 5. Ripening.
 
-2. Create tabulation based CCTV images and LS8 value. Erase all FMASK<>322
+2. Only data with pixel quality (2,4,5,6,7) is processed
 
-3. Building the model using several classifiers and tuning it using SR_Landsat8_ML_2018_indramayu_EDIT.R
+3. Building the model using SVM Radial and tuning it using B-ML_LS8_S1_LEE_S2_2019_5class_surveyV2.r
 
-4. Recap the classifier's result using recap_SR_output_model_LS8_2018_indramayu_edit.R
+5. Change RDS path file to best model on C-step1-2019_classify_S2_V4.R
 
-5. Copy the best model for each classifier into MODEL folder
+C. Running the model
+1. Run C-step1-2019_classify_S2_V4.R for classifying
 
-6. Change RDS path file to best model on SR_Landsat8_indramayu_ML_classify2.R
+2. Run C-step2-2019_merge_S2v2.R for merging into one image
 
-7. Run SR_Landsat8_indramayu_ML_classify2.R for classifying.R
+3. Run C-step3-2019_CLEAR_ALLv4.R for merging with Sentinel-1 VH to detect rice period 
 
-8. Run SR_Landsat8_indramayu_ML_mask_clip_region_paddy_utm2.R and SR_Landsat8_indramayu_ML_merge_fmask_utm2.R for merging into one image
+D. Temporal changes
 
-9. Run SR_Landsat8_indramayu_ML_change_detection_paddy_utm2.R for detecting change classes
+3. Run D-step1-2019_CHANGE_ALLv1 for detecting change classes with 5,10,15,20,25,30 lag days
 
-10. Run SR_Landsat8_indramayu_ML_change_detection_paddy_utm_reclass2.R for reclass of change detection
+4. Run D-step2-Recap-Change_V4.R for recaping the change detection data
 
