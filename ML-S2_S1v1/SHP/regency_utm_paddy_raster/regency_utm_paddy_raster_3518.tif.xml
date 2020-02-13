@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata xml:lang="en"><Esri><CreaDate>20190109</CreaDate><CreaTime>14435200</CreaTime><ArcGISFormat>1.0</ArcGISFormat><SyncOnce>TRUE</SyncOnce><DataProperties><lineage><Process ToolSource="c:\program files (x86)\arcgis\desktop10.6\ArcToolbox\Toolboxes\Spatial Analyst Tools.tbx\ExtractByMask" Date="20190109" Time="144352">ExtractByMask regency_utm_raster_3518.tif paddy_3518 F:\R-Script-DriveF\S2-JAVA-UTM\shp\regency_utm_paddy_raster\regency_utm_paddy_raster_3518.tif</Process></lineage></DataProperties></Esri></metadata>
