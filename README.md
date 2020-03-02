@@ -23,14 +23,16 @@ B. Building the model
 
 3. Building the model using SVM Radial and tuning it using B-ML_LS8_S1_LEE_S2_2019_5class_surveyV2.r
 
-5. Change RDS path file to best model on C-step1-2019_classify_S2_V4.R
+4. Change RDS path file to best model on C-step1-2019_classify_S2_V4.R
 
 C. Running the model
 1. Run C-step1-2019_classify_S2_V4.R for classifying
 
 2. Run C-step2-2019_merge_S2v2.R for merging into one image
 
-3. Run C-step3-2019_CLEAR_ALLv4.R for merging with Sentinel-1 VH to detect rice period 
+3. Run C-step3-2019_CLEAR_S2VH_ALLv1.R for filtering low VH value (-20 db) and bare land.
+
+4. Run C-step4-2019_CLEAR_ALLv4.R for merging with Sentinel-1 VH to detect rice period 
 
 D. Temporal changes
 
