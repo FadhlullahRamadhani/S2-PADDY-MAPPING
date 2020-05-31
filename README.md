@@ -13,7 +13,9 @@ I. Download Data Sentinel-1
 
 2. Download S1 VH with LEE filtering data using dl_S1_VH_DESC_LEE_7regency_full1.py
 
-II. Classification process
+2. Download MOD13Q1 using dl_MOD13Q1_ALL_250_JAVA_v1.ipynb
+
+II. Classification S-2 process
 A. Cliping the S2-Bands with A-S2_L2A_BAND_PR_ARCPY_PADDY1.R and A-S1_LEE_split_paddy_VH1 for Sentinel-1 VH band (with ArcGIS installed. adjust the folder of ArcPy)
 
 B. Building the model
@@ -36,7 +38,31 @@ C. Running the model
 
 D. Temporal changes
 
-3. Run D-step1-2019_CHANGE_ALLv1 for detecting change classes with 5,10,15,20,25,30 lag days
+1. Run D-step1-2019_CHANGE_ALLv1 for detecting change classes with 5,10,15,20,25,30 lag days
 
-4. Run D-step2-Recap-Change_V4.R for recaping the change detection data
+2. Run D-step2-Recap-Change_V4.R for recaping the change detection data
 
+III. Classification MOD13Q1 process
+A. Pre-processing
+1. Separating bands from original MOD13Q1 with A.1.MOD13Q1_separate_band.R 
+
+2. Cliping the MOD13Q1-Bands with A.2.MOD13Q1_ARCPY_PADDY1.R and A.3.MOD13Q1_split_band_region.R (with ArcGIS installed. adjust the folder of ArcPy)
+
+3. resampling MOD13Q1 bands into 10m A.4.MOD13Q1_resample10m_band_region.R
+
+B. Building the model 
+1. Labelling on points from field survey just for five rice condition: 1. Bare land, 2. Flooding, 3. Vegetative, 4. Reproductive, 5. Ripening.
+
+2. Building the model using SVM Radial with dataset S1_MOD13Q1_ML_v6.xlsx and tuning it using B.S1_MOD13Q1_ML_v6.r
+
+3. Change RDS path file to best model on C-Run-ML-MOD13Q1_S1_classify_v6_2019.R
+
+C. Running the model
+
+1. Run C-Run-ML-MOD13Q1_S1_classify_v6_2019.R for each district.
+
+D. Temporal changes
+
+1. Run D.MOD13Q1_change_v1.R for detecting change classes with 16 lag days
+
+2. Run D.Recap-Change_MOD13Q1.R for recaping the change detection data
