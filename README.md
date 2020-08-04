@@ -53,13 +53,13 @@ A. Pre-processing
 B. Building the model 
 1. Labelling on points from field survey just for five rice condition: 1. Bare land, 2. Flooding, 3. Vegetative, 4. Reproductive, 5. Ripening.
 
-2. Building the model using SVM Radial with dataset S1_MOD13Q1_ML_v6.xlsx and tuning it using B.S1_MOD13Q1_ML_v6.r
+2. Building the model using SVM Radial with dataset S1_MOD13Q1_ML_v5.xlsx and tuning it using B.S1_MOD13Q1_ML_v5.r
 
-3. Change RDS path file to best model on C-Run-ML-MOD13Q1_S1_classify_v6_2019.R
+3. Change RDS path file to best model on C.Run-ML-MOD13Q1_S1_classify_v5_2019_32_TS.R and C.Run-ML-MOD13Q1_S1_classify_v5_2019_35_TS.R
 
 C. Running the model
 
-1. Run C-Run-ML-MOD13Q1_S1_classify_v6_2019.R for each district.
+1. Run C-Run-ML-MOD13Q1_S1_classify_v5_2019.R for each district.
 
 D. Temporal changes
 
