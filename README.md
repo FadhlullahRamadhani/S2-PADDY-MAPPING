@@ -1,6 +1,8 @@
 # S2-PADDY-MAPPING
 
 # Mapping of rice condition on dry season using predictive analysis
+please cite this work with:
+Ramadhani, F., Pullanagari, R., Kereszturi, G., & Procter, J. (2020). Automatic Mapping of Rice Growth Stages Using the Integration of SENTINEL-2, MOD13Q1, and SENTINEL-1. Remote Sensing, 12(21), 3613. https://www.mdpi.com/2072-4292/12/21/3613 
 
 This is the steps to recreate the mapping. Please change the path of folder accordingly. 
 
